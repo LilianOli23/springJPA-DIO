@@ -1,10 +1,13 @@
 package br.com.dio.demo.domain.model;
 
 import lombok.Data;
+import org.hibernate.annotations.CreationTimestamp;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import java.time.LocalDate;
 
 @Entity
 @Data
@@ -30,7 +33,12 @@ public class Pessoa {
     @Column(name = "cidade")
     private String cidade;
 
-    @Column(name = "estado")
-    private String estado;
+    @ManyToOne
+    private Estado estado;
+
+    @CreationTimestamp
+    @Column(name= "data_cadastro")
+    private LocalDate dataCadastro;
+
 
 }
